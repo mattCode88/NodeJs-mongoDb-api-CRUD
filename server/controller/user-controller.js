@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     //save user in database
     user
         .save(user)
-        .then(data => { res.redirect('/users/show-user') })
+        .then(data => { res.redirect('/users/show-users') })
         .catch(err => { res.status(500).send({ message: err.message || 'Error to create operation' }) });
 };
 
@@ -58,7 +58,7 @@ exports.update = (req, res) => {
             if (!data) {
                 res.status(404).send({ message: `Cannot update user with ${id}. Maybe user not found` });
             } else {
-                res.redirect('/users/show-user');
+                res.redirect('/users/show-users');
             }
         })
         .catch(err => { res.status(500).send({ message: 'Error update user informations' }) });
@@ -73,7 +73,7 @@ exports.delete = (req, res) => {
             if (!data) {
                 res.status(404).send({ message: `Cannot delete with id ${id}. Maybe id is wrong.` })
             } else {
-                res.redirect('/users/show-user');
+                res.redirect('/users/show-users');
             }
         })
         .catch(err => {

@@ -1,18 +1,28 @@
 const axios = require('axios');
 
-exports.homeRoutes = (req, res) => {
+exports.showUsers = (req, res) => {
 
     // invio richiesta axios a api/users per ottenere il json degli utenti da passare alla show-user
     axios.get('http://localhost:3000/api/users')
         .then(response => {
             //passo alla show.ejs l' oggetto contenente la respose
-            res.render('show-user', { users: response.data });
+            res.render('show-users', { users: response.data });
         })
         .catch(err => {
             res.send(err);
         })
 
 };
+
+exports.showUser = (req, res) => {
+    axios.get('http://localhost:3000/api/users', { params: { id: req.query.id } })
+        .then(userData => {
+            res.render('show-user', { user: userData.data })
+        })
+        .catch(err => {
+            res.send(err);
+        })
+}
 
 exports.addUser = (req, res) => {
     res.render('add-user');

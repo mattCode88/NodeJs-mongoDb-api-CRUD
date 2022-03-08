@@ -6,7 +6,13 @@ const services = require('../services/render');
  * @description Root Route
  * @method GET /
  */
-route.get('/show-user', services.homeRoutes);
+route.get('/show-users', services.showUsers);
+
+/**
+ * @description Root Route
+ * @method GET /
+ */
+route.get('/show-user', services.showUser);
 
 /**
  * @description Add User Route
