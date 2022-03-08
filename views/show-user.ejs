@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Users</title>
+</head>
+<body>
+    <h1>Pagina Show Users</h1>
+    <div><a href="/">Torna alla Home Page</a></div>
+    <div><a href="/users/add-user">Aggiungi un utente</a></div>
+    
+    <div>
+        <% users.forEach((user, index) => { %>
+            
+            <h3><a href="">Utente <%= index + 1 %></a> <span><a href="/users/update-user/?id=<%= user._id %>">Modifica</a></span></h3>
+            <div><%= user.name %></div>
+            <div><%= user.email %></div>
+            <div><%= user.passwd %></div>
+
+            <div>
+                <form action="/api/users/<%= user._id %>?_method=DELETE" method="POST">
+                    <button type="submit">DELETE</button>
+                </form>
+            </div>
+
+        <% }) %>
+    </div>
+    
+    
+</body>
+</html>
